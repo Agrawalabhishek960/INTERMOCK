@@ -3,7 +3,7 @@ const app=express();
 const port=3000;
 
 app.get("/",function(req,res){
-    res.send('<h1>Ayushi I love u yaar.<br>Come back to my life')
+    res.send('<h1>Ayu.<br>Come back to my life')
 
 })
 app.listen(port,function(error){
