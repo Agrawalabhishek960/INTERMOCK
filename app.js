@@ -10,6 +10,6 @@ app.listen(port,function(error){
         console.log("Port is running 3000")
     }
 })
-app.get("/",function(req,res){
+app.get("/home",function(req,res){
     res.render("home.ejs");
 })
