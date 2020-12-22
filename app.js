@@ -1,6 +1,12 @@
 const express=require('express');
 const app=express();
+var mongoose= require('mongoose');
 const port=3000;
+mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/USERS?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
+    console.log("connected to DB");
+}).catch(err => {
+    console.log("Error",err.message);
+});
 app.listen(port,function(error){
     if(error){
         console.log("error")
@@ -10,6 +16,6 @@ app.listen(port,function(error){
         console.log("Port is running 3000")
     }
 })
-app.get("/home",function(req,res){
+app.get("/",function(req,res){
     res.render("home.ejs");
 })
