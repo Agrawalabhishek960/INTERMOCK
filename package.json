@@ -4,6 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "build": "ng build",
+    "heroku-postbuild": "ng build --prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "abhishek",
