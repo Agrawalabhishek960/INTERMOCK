@@ -7,6 +7,7 @@ mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/U
 }).catch(err => {
     console.log("Error",err.message);
 });
+app.set("view engine","ejs");
 app.use(express.static("public"));
 app.listen(port,function(error){
     if(error){
@@ -18,5 +19,8 @@ app.listen(port,function(error){
     }
 })
 app.get("/",function(req,res){
-    res.render("home.ejs");
+    res.render("home");
+})
+app.get("/home",function(req,res){
+    res.render("home");
 })
