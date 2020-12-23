@@ -2,26 +2,61 @@
     height: 47px;
     width: 180px;
 }
-#first_h1{
-    margin-left: 30%;
-    margin-top: 5%;
-}
-#first_p{
-    margin-left: 25%;
-    font-size: 25px;
-    font-weight: bold;
-}
-#second_p{
-    margin-left: 8%;
-    font-size: 25px;
-    margin-top: 2%;
-}
-#first_span{
-    margin-left: 3%;
-}
 #sub_but{
     margin-left: 45%;
 }
 #login_but{
     margin-right: 1px;
 }
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  
+  @media screen and (min-width: 601px) {
+    #first_h1{
+        font-size: 50px;
+        margin-left: 25%;
+        margin-top: 5%;
+        font-weight: bold;
+      }
+    #first_p{
+      font-size: 30px;
+      margin-left: 20%;
+    }
+    #second_p{
+        font-size: 25px;
+        margin-left: 10%;
+        margin-top: 2%;
+      }
+    #first_span{
+        margin-left: 3%;
+    }
+  }
+  #sub_but{
+    margin-left: 40%;
+}
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+    #first_h1{
+        font-size: 24px;
+        margin-left: 12%;
+        font-weight: bold;
+      }
+    #first_p{
+      font-size: 13px;
+      margin-left: 8%;
+      font-weight: bold;
+    }
+    #second_p{
+        font-size: 18px;
+        margin-left: 6%;
+        margin-top: 2%;
+      }
+      #first_span{
+        margin-left: 0%;
+    }
+    #sub_but{
+        margin-left: 30%;
+    }
+  }
+  
+  
