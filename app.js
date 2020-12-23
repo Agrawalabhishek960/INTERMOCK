@@ -7,6 +7,7 @@ mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/U
 }).catch(err => {
     console.log("Error",err.message);
 });
+app.use(express.static("public"));
 app.listen(port,function(error){
     if(error){
         console.log("error")
