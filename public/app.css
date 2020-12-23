@@ -6,7 +6,7 @@
     margin-left: 45%;
 }
 #login_but{
-    margin-right: 1px;
+    margin-right: 2px;
 }
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
   
@@ -29,9 +29,20 @@
     #first_span{
         margin-left: 3%;
     }
-  }
   #sub_but{
     margin-left: 40%;
+}
+#what h3{
+    padding-left: 31%;
+}
+.card{
+    padding-left: 5%;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 18rem;
+}
 }
   
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
@@ -47,7 +58,7 @@
       font-weight: bold;
     }
     #second_p{
-        font-size: 18px;
+        font-size: 17px;
         margin-left: 6%;
         margin-top: 2%;
       }
@@ -57,6 +68,24 @@
     #sub_but{
         margin-left: 30%;
     }
+    #what h3{
+        padding-left: 0%;
+    }
+    .card{
+        padding-left: 5%;
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        width: 22rem;
+    }
+  }
+  #what{
+      border: 1px;
+      color:#5c5a54;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 4%;
   }
   
   
