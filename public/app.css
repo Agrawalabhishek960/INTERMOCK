@@ -58,6 +58,10 @@
 #change{
   width: 0px;
 }
+#about_logo{
+  width:17%;
+  height: 17%;
+}
 }
   
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
@@ -115,6 +119,10 @@
     #change2{
       width: 0px;
     }
+    #about_logo{
+      width:40%;
+      height: 40%;
+    }
   }
   .card-img-top{
     height:150px;
@@ -135,4 +143,16 @@
 .how-section1 .row
 {
     margin-top: 10%;
+}
+#footer_about{
+margin-top: 10%;
+}
+#aboutus{
+  float:right;
+  margin-top: 1%;
+  color: #5c5a54;
+  font-size: 20px;
+}
+#aboutus:hover{
+  color: #ffa500;
 }
