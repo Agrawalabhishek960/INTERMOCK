@@ -8,7 +8,7 @@
 #login_but{
     margin-right: 2px;
 }
-  @media screen and (min-width: 1251px) {
+  @media screen and (min-width: 601px) {
     #first_h1{
         font-size: 50px;
         margin-left: 25%;
@@ -51,7 +51,7 @@
 }
   
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 600px) {
     #first_h1{
         font-size: 44px;
         margin-left: 16%;
