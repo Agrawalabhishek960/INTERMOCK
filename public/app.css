@@ -54,7 +54,7 @@
   @media screen and (max-width: 600px) {
     #first_h1{
         font-size: 30px;
-        margin-left: 1%;
+        margin-left: 3%;
         font-weight: bold;
       }
     #first_p{
@@ -68,7 +68,7 @@
         margin-top: 2%;
       }
     #sub_but{
-        margin-left: 25%;
+        margin-left: 23%;
     }
     #what h3{
         padding-left: 0%;
@@ -76,6 +76,12 @@
     }
     #you{
       margin-left: 35%;
+    }
+    #with_us{
+      margin-left: 10%;
+    }
+    #your{
+      margin-left: 3%;
     }
     #what{
       border: 1px;
