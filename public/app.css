@@ -60,9 +60,6 @@
         margin-left: 6%;
         margin-top: 2%;
       }
-      #first_span{
-        margin-left: 0%;
-    }
     #sub_but{
         margin-left: 30%;
     }
@@ -88,5 +85,6 @@
   .card-img-top{
     height:150px;
   }
-  
-  
+  #container {
+    width:100%; margin-right:auto; margin-left:auto;
+  }
