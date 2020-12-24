@@ -48,6 +48,16 @@
     margin-bottom: 2%;
     width: 18rem;
 }
+.how-img 
+{
+    text-align: center;
+}
+.how-img img{
+  width: 40%;
+}
+#change{
+  width: 0px;
+}
 }
   
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
@@ -98,6 +108,13 @@
         margin-bottom: 2%;
         width: 30rem;
     }
+    #change{
+         width: 80%;
+         text-align: center;
+    }
+    #change2{
+      width: 0px;
+    }
   }
   .card-img-top{
     height:150px;
@@ -118,11 +135,4 @@
 .how-section1 .row
 {
     margin-top: 10%;
-}
-.how-img 
-{
-    text-align: center;
-}
-.how-img img{
-    width: 40%;
 }
