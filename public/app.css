@@ -53,7 +53,7 @@
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
   @media screen and (max-width: 600px) {
     #first_h1{
-        font-size: 40px;
+        font-size: 38px;
         margin-left: 0%;
         font-weight: bold;
       }
@@ -68,17 +68,17 @@
         margin-top: 2%;
       }
     #sub_but{
-        margin-left: 30%;
+        margin-left: 25%;
     }
     #what h3{
         padding-left: 0%;
-        font-size: 30px;
+        font-size: 27px;
     }
     #what{
       border: 1px;
       color:#5c5a54;
-      margin-left: 12%;
-      margin-right: 10%;
+      margin-left: 7%;
+      margin-right: 7%;
       margin-top: 4%;
       padding-left: 7%;
   }
