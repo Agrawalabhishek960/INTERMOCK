@@ -1,7 +1,7 @@
 const express=require('express');
 const app=express();
 var mongoose= require('mongoose');
-const port=3000;
+const port=process.env.PORT || 3000;
 mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/USERS?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
     console.log("connected to DB");
 }).catch(err => {
