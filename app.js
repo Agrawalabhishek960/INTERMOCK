@@ -28,9 +28,9 @@ app.get("/home",function(req,res){
 })
 // let user= new User({
 
-//     email: "Anchal",
+//     email: "agra",
 
-//     password: "Monika"
+//     password: "kk"
 
 //   });
 
