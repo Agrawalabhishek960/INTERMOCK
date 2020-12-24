@@ -26,19 +26,3 @@ app.get("/",function(req,res){
 app.get("/home",function(req,res){
     res.render("home");
 })
-// let user= new User({
-
-//     email: "Anchal",
-
-//     password: "Monika"
-
-//   });
-
-// user.save(function(error){
-//     if(error){
-//         console.log(error)
-//     }
-//     else{
-//         console.log("inserted a new user in the database "+ user)
-//     }
-// });
