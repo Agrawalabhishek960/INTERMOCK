@@ -53,8 +53,8 @@
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
   @media screen and (max-width: 600px) {
     #first_h1{
-        font-size: 44px;
-        margin-left: 16%;
+        font-size: 40px;
+        margin-left: 0%;
         font-weight: bold;
       }
     #first_p{
@@ -68,11 +68,11 @@
         margin-top: 2%;
       }
     #sub_but{
-        margin-left: 42%;
+        margin-left: 30%;
     }
     #what h3{
         padding-left: 0%;
-        font-size: 50px;
+        font-size: 30px;
     }
     #what{
       border: 1px;
@@ -80,7 +80,7 @@
       margin-left: 12%;
       margin-right: 10%;
       margin-top: 4%;
-      padding-left: 10%;
+      padding-left: 7%;
   }
     .card{
         padding-left: 4%;
