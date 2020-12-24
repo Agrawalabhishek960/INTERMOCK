@@ -15,3 +15,22 @@ mongoose.connect('mongodb+srv://irretus:irretus@irretusagrobackend.nfbaw.mongodb
 });
 
 
+//To create a new user
+let user= new User({
+
+    email: "anchal@gmail.com",
+
+    password: "Monika"
+
+  });
+
+user.save(function(error){
+    if(error){
+        console.log(error)
+    }
+    else{
+        console.log("inserted a new user in the database "+ user)
+    }
+});
+
+
