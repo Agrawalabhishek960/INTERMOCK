@@ -54,17 +54,17 @@
   @media screen and (max-width: 600px) {
     #first_h1{
         font-size: 30px;
-        margin-left: 3%;
+        margin-left:5%;
         font-weight: bold;
       }
     #first_p{
       font-size: 28px;
-      margin-left: 10%;
+      margin-left: 5%;
       font-weight: bold;
     }
     #second_p{
         font-size: 17px;
-        margin-left: 3%;
+        margin-left: 5%;
         margin-top: 2%;
       }
     #sub_but{
@@ -78,7 +78,7 @@
       margin-left: 35%;
     }
     #with_us{
-      margin-left: 30%;
+      margin-left: 28%;
     }
     #your{
       margin-left: 20%;
