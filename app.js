@@ -1,6 +1,9 @@
 const express=require('express');
 const app=express();
+var path = require('path');
 var mongoose= require('mongoose');
+var passport= require('passport')
+var LocalStrategy= require('passport-local')
 var User=require("./models/user");
 const port=process.env.PORT || 3000;
 var bodyParser = require('body-parser');
@@ -13,6 +16,20 @@ mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/U
 });
 app.set("view engine","ejs");
 app.use(express.static("public"));
+app.use(require("express-session")({
+    secret: "Once again Rusty wins cutest dog!",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+ });
 app.listen(port,function(error){
     if(error){
         console.log("error")
@@ -21,7 +38,7 @@ app.listen(port,function(error){
     else{
         console.log("Port is running 3000")
     }
-})
+});
 app.get("/",function(req,res){
     res.render("home");
 })
@@ -34,24 +51,55 @@ app.get("/register",function(req,res){
 app.get("/login",function(req,res){
     res.render("login")
 })
-app.post("/register",function(req,res){
-    var newUser=new User({
-        firstname:req.body.fname,
+app.post("/register", function(req, res){
+    var newUser = new User({
+        username: req.body.fname,
         lastname:req.body.lname,
         email: req.body.email,
-        password: req.body.password,
+        password:req.body.password,
+        phone:req.body.phone,
         address:req.body.address,
-        phone:req.body.phone
-    })
-    newUser.save(function(err){
+    });
+    User.register(newUser, req.body.password, function(err, user){
         if(err){
-            console.log(err)
+            console.log(err);
+            return res.render("register");
         }
-        else{
-            console.log(newUser+"saved a new user")
-        }
-    })
-    res.redirect("/login")
-})
-
-
+        res.redirect("/home");
+        });
+});
+// app.post("/register",function(req,res){
+//     var newUser=new User({
+//         firstname:req.body.fname,
+//         lastname:req.body.lname,
+//         email: req.body.email,
+//         password: req.body.password,
+//         address:req.body.address,
+//         phone:req.body.phone
+//     })
+//     newUser.save(function(err){
+//         if(err){
+//             console.log(err)
+//         }
+//         else{
+//             console.log(newUser+"saved a new user")
+//         }
+//     })
+//     res.redirect("/login")
+// })
+// app.post("/login",async function(req,res){
+//     const {email,password}=req.body;
+//     const user=await User.findOne({email});
+//     if(!user){
+//         res.send("No such user")
+//         res.redirect("register")
+//     }
+//     else{
+//         if(user.password!=password){
+//             res.send("Wrong password")
+//             res.redirect("login")
+//         }
+//         res.send("welcome")
+//         res.redirect("home")
+//     }
+// })
