@@ -1,9 +1,9 @@
 var mongoose=require('mongoose');
 var userSchema=new mongoose.Schema({
-    firtname:{type:String,required:true},
+    firstname:{type:String,required:true},
     lastname:{type:String,required:true},
-    phone:Number,
-    college:String,
+    phone:{type:Number,required:true},
+    address:{type:String},
     email:{
         type:String,unique:true,required:true,match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
     },
