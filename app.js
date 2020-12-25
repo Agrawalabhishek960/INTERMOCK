@@ -4,7 +4,7 @@ var mongoose= require('mongoose');
 var User=require("./models/user");
 const port=process.env.PORT || 3000;
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb+srv://irretus:irretus@irretusagrobackend.nfbaw.mongodb.net/users?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
+mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/USERS?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
     console.log("connected to DB");
 }).catch(err => {
     console.log("Error",err.message);
