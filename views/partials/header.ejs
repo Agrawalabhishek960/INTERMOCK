@@ -37,11 +37,23 @@
               </div>
             </li>
           </ul>
-          <div id="login_but">
+          <% if(!currentUser){ %>
+          <div class="nav_but">
             <a class="btn btn-primary" href="/login" role="button">LOGIN</a>
           </div>
           <div >
             <a class="btn btn-primary" href="/register" role="button">SIGNUP</a>
           </div>
+          <% } else { %>
+            <div class="nav_but">
+            <a href="#" class="btn btn-info btn-lg">
+              <span class="glyphicon glyphicon-user"></span> User 
+            </a>
+            </div>
+            <div >
+              <a class="btn btn-primary" href="/logout" role="button">LOGOUT</a>
+            </div>
+
+            <% } %>
         </div>
       </nav>

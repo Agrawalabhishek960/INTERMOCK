@@ -1,9 +1,8 @@
 const express=require('express');
 const app=express();
-var path = require('path');
+var LocalStrategy= require('passport-local')
 var mongoose= require('mongoose');
 var passport= require('passport')
-var LocalStrategy= require('passport-local')
 var User=require("./models/user");
 const port=process.env.PORT || 3000;
 var bodyParser = require('body-parser');
@@ -17,7 +16,7 @@ mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/U
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(require("express-session")({
-    secret: "Once again Rusty wins cutest dog!",
+    secret: "Owner is abhishek and ravi",
     resave: false,
     saveUninitialized: false
 }));
@@ -51,23 +50,30 @@ app.get("/register",function(req,res){
 app.get("/login",function(req,res){
     res.render("login")
 })
-app.post("/register", function(req, res){
+app.post("/register", async function(req, res){
     var newUser = new User({
-        username: req.body.fname,
-        lastname:req.body.lname,
+        name: req.body.name,
+        username:req.body.username,
         email: req.body.email,
-        password:req.body.password,
         phone:req.body.phone,
-        address:req.body.address,
+        address:req.body.address
     });
-    User.register(newUser, req.body.password, function(err, user){
+    await User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
             return res.render("register");
-        }
-        res.redirect("/home");
+        }passport.authenticate("local")(req, res, function(){
+            res.redirect("/home"); 
+         });
         });
 });
+app.post("/login", passport.authenticate("local",{failureRedirect:"/login"}),(req,res)=>{
+    res.redirect("/home");
+})
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/home");
+ });
 // app.post("/register",function(req,res){
 //     var newUser=new User({
 //         firstname:req.body.fname,
@@ -99,7 +105,6 @@ app.post("/register", function(req, res){
 //             res.send("Wrong password")
 //             res.redirect("login")
 //         }
-//         res.send("welcome")
 //         res.redirect("home")
 //     }
 // })
