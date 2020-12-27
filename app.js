@@ -4,6 +4,7 @@ var LocalStrategy= require('passport-local')
 var mongoose= require('mongoose');
 var passport= require('passport')
 var User=require("./models/user");
+var nodemailer = require('nodemailer');
 const port=process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
@@ -40,6 +41,7 @@ app.listen(port,function(error){
         console.log("Port is running 3000")
     }
 });
+
 app.get("/",function(req,res){
     res.render("home");
 })
@@ -68,6 +70,33 @@ app.post("/register", async function(req, res){
             res.redirect("/home"); 
          });
         });
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'entermock@gmail.com',
+              pass: 'sunbeamsuncity'
+            }
+          });
+          
+          var mailOptions = {
+            from: 'entermock@gmail.com',
+            to: req.body.email,
+            subject: 'Welcome to EnterMock ! The owl is happy with you.',
+            text: "Hello "+req.body.username+`, thank you for choosing EnterMock, a complete package of all your placement needs.
+We are here to help you crack your dream interview and make yourself and your loved ones proud. We are really serious about the covid pandemic and are giving our best to get you all placed.
+EnterMock Family welcomes you whole-heartedly and congratulates you for this new beginning.
+
+Thank you
+EnterMock Groups of Education and Research.`
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
 });
 app.post("/login", passport.authenticate("local",{failureRedirect:"/login"}),(req,res)=>{
     res.redirect("/home");
