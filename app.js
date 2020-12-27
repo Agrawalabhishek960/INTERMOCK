@@ -97,6 +97,35 @@ EnterMock Groups of Education and Research.`
               console.log('Email sent: ' + info.response);
             }
           });
+                    //mail number 2
+                    var transporter2 = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                          user: 'entermock@gmail.com',
+                          pass: 'sunbeamsuncity'
+                        }
+                      });
+                      
+                      var mailOptions2 = {
+                        from: 'entermock@gmail.com',
+                        to: 'entermock@gmail.com',
+                        subject: 'A new user has registered.',
+                        text: "Hello sir, a new user has registered just now. Here are the details"+`
+                        `+"name-> "+req.body.name+`
+                        `+"username-> "+req.body.username+`
+                        `+"email-> "+req.body.email+`
+                        `+"phone-> "+req.body.phone+`
+                        `+"address-> "+req.body.address
+                      };
+                      
+                      
+                      transporter2.sendMail(mailOptions2, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      });
 });
 app.post("/login", passport.authenticate("local",{failureRedirect:"/login"}),(req,res)=>{
     res.redirect("/home");
@@ -108,37 +137,3 @@ app.get("/logout", function(req, res){
  app.get("/prepare",function(req,res){
      res.render("prepare")
  })
-// app.post("/register",function(req,res){
-//     var newUser=new User({
-//         firstname:req.body.fname,
-//         lastname:req.body.lname,
-//         email: req.body.email,
-//         password: req.body.password,
-//         address:req.body.address,
-//         phone:req.body.phone
-//     })
-//     newUser.save(function(err){
-//         if(err){
-//             console.log(err)
-//         }
-//         else{
-//             console.log(newUser+"saved a new user")
-//         }
-//     })
-//     res.redirect("/login")
-// })
-// app.post("/login",async function(req,res){
-//     const {email,password}=req.body;
-//     const user=await User.findOne({email});
-//     if(!user){
-//         res.send("No such user")
-//         res.redirect("register")
-//     }
-//     else{
-//         if(user.password!=password){
-//             res.send("Wrong password")
-//             res.redirect("login")
-//         }
-//         res.redirect("home")
-//     }
-// })
