@@ -137,3 +137,14 @@ app.get("/logout", function(req, res){
  app.get("/prepare",function(req,res){
      res.render("prepare")
  })
+ app.get("/home/:id",function(req,res){
+	User.findById(req.params.id, function(err,foundUser){
+		if(err)
+			{
+				console.log(err);
+			}
+		else{
+			res.render("show",{user:foundUser});
+		}
+	});
+});

@@ -1,0 +1,56 @@
+<%- include("partials/header")%>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		    <div class="card">
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Your Profile</h4>
+		                    <hr>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <form>
+                              <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">User Name</label> 
+                                <div class="col-8">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.username%>">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Name</label> 
+                                <div class="col-8">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.name%>">
+                                </div>
+                              </div>
+            
+                              <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Email</label> 
+                                <div class="col-8">
+                                 <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.email%>">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="phoneno" class="col-4 col-form-label">PHONE NO</label> 
+                                <div class="col-8">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.phone%>">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="address" class="col-4 col-form-label">ADDRESS</label> 
+                                <div class="col-8">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.address%>">
+                                </div>
+                              </div>
+                            </form>
+		                </div>
+		            </div>
+		            
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<%- include("partials/footer")%>
