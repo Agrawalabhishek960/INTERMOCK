@@ -76,6 +76,9 @@ app.get("/logout", function(req, res){
     req.logout();
     res.redirect("/home");
  });
+ app.get("/prepare",function(req,res){
+     res.render("prepare")
+ })
 // app.post("/register",function(req,res){
 //     var newUser=new User({
 //         firstname:req.body.fname,
