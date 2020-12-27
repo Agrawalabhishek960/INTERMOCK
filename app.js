@@ -7,12 +7,14 @@ var User=require("./models/user");
 const port=process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
+require('dotenv').config();
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/USERS?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
+mongoose.connect(process.env.mongo, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
     console.log("connected to DB");
 }).catch(err => {
     console.log("Error",err.message);
 });
+
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(require("express-session")({
