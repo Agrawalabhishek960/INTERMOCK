@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 require('dotenv').config();
 mongoose.set('useCreateIndex', true);
-mongoose.connect(process.env.mongo, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
+mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
     console.log("connected to DB");
 }).catch(err => {
     console.log("Error",err.message);
