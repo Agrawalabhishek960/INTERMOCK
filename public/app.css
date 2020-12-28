@@ -62,7 +62,7 @@
   width:17%;
   height: 17%;
 }
-#aboutus{
+.aboutus{
   float:right;
   margin-top: 1%;
   color: #5c5a54;
@@ -137,11 +137,14 @@
       height: 25%;
       font-size: 8px;
     }
-    #aboutus{
-      margin-right: 10%;
+    .aboutus{
       margin-top: 1%;
       color: #5c5a54;
       font-size: 20px;
+    }
+    #contactus{
+      
+      margin-right: 10%;
     }
   }
   .card-img-top{
