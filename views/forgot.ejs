@@ -1,0 +1,14 @@
+<%- include("partials/header")%>
+<div class="container">
+    <form action="/forgot" method="post">
+      <div class="form-row">
+         <div class="form-group col-md-6">
+          <label for="name4">Email</label>
+          <input type="text" name="email" class="form-control" placeholder="Enter registered email" required="true">
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<%- include("partials/footer")%>
