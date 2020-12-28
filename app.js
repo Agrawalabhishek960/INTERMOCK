@@ -1,6 +1,8 @@
 const express=require('express');
 const app=express();
 var LocalStrategy= require('passport-local')
+var methodOverride=require('method-override');
+var expressSanitizer= require('express-sanitizer');
 var mongoose= require('mongoose');
 var passport= require('passport')
 var User=require("./models/user");
@@ -19,6 +21,8 @@ mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology:
 });
 
 app.set("view engine","ejs");
+app.use(expressSanitizer());
+app.use(methodOverride("_method"));
 app.use(express.static("public"));
 app.use(require("express-session")({
     secret: "Owner is abhishek and ravi",
@@ -259,5 +263,26 @@ app.post('/forgot', function(req, res, next) {
       }
     ], function(err) {
       res.redirect('/');
+    });
+  });
+  app.get("/home/:id/settings",function(req,res){
+    User.findById(req.params.id,function(err,foundUser){
+      if(err)
+        {
+          console.log(err);
+        }
+      else{
+        res.render("settings",{user:foundUser});
+      }
+    });
+  });
+  app.put("/home/:id",function(req,res){
+    User.findByIdAndUpdate(req.params.id,req.body.user,function(err,updateUser){
+      if(err){
+        console.log(err)
+      }
+      else{
+        res.redirect("/home/"+req.params.id);
+      }
     });
   });
