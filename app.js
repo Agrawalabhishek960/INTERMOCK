@@ -4,6 +4,7 @@ var LocalStrategy= require('passport-local')
 var methodOverride=require('method-override');
 var expressSanitizer= require('express-sanitizer');
 var mongoose= require('mongoose');
+var flash=require("connect-flash")
 var passport= require('passport')
 var User=require("./models/user");
 var crypto =require("crypto")
@@ -12,6 +13,7 @@ var nodemailer = require('nodemailer');
 const port=process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(flash());
 require('dotenv').config();
 mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
@@ -47,6 +49,11 @@ app.listen(port,function(error){
         console.log("Port is running 3000")
     }
 });
+app.use((req,res,next)=>{
+  res.locals.success=req.flash('success');
+  res.locals.error=req.flash('error')
+  next()
+})
 
 app.get("/",function(req,res){
     res.render("home");
@@ -73,7 +80,8 @@ app.post("/register", async function(req, res){
             console.log(err);
             return res.render("register");
         }passport.authenticate("local")(req, res, function(){
-            res.redirect("/home"); 
+          req.flash("success","You have successfully created your account")  
+          res.redirect("/home"); 
          });
         });
         var transporter = nodemailer.createTransport({
@@ -133,11 +141,16 @@ EnterMock Groups of Education and Research.`
                         }
                       });
 });
-app.post("/login", passport.authenticate("local",{failureRedirect:"/login"}),(req,res)=>{
+app.post("/login", passport.authenticate("local",
+{
+  failureRedirect:"/login",failureFlash:'Invalid Username or password'
+}),(req,res)=>{
+    req.flash("success","Logged in successfully")
     res.redirect("/home");
 })
 app.get("/logout", function(req, res){
     req.logout();
+    req.flash("success","Logged out successfully")
     res.redirect("/home");
  });
  app.get("/prepare",function(req,res){
