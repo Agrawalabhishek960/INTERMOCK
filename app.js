@@ -242,13 +242,13 @@ app.post('/forgot', function(req, res, next) {
         var smtpTransport = nodemailer.createTransport({
           service: 'gmail', 
           auth: {
-            user: 'rganga757@gmail.com',
-            pass: 'R@v1lovesgmail'
+            user: 'entermock@gmail.com',
+            pass: 'sunbeamsuncity'
           }
         });
         var mailOptions = {
           to: user.email,
-          from: 'rganga757@gmail.com',
+          from: 'entermock@gmail.com',
           subject: 'Your password has been changed',
           text: 'Hello,\n\n' +
             'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
