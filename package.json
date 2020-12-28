@@ -1,7 +1,7 @@
 {
   "name": "intermock",
   "version": "1.0.0",
-  "description": "",
+  "description": "THis is our project which will help us learn how to actually use the git as a version control and work in a team as well.\r mongoose.connect('mongodb+srv://INTERMOCK:INTERMOCK@cluster0.o8owo.mongodb.net/USERS?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {\r     console.log(\"connected to DB\");\r }).catch(err => {\r     console.log(\"Error\",err.message);\r });",
   "main": "app.js",
   "scripts": {
     "heroku-postbuild": "npm run build",
@@ -24,5 +24,14 @@
     "passport-local-authenticate": "^1.2.0",
     "passport-local-mongoose": "^6.0.1",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agrawalabhishek960/INTERMOCK.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Agrawalabhishek960/INTERMOCK/issues"
+  },
+  "homepage": "https://github.com/Agrawalabhishek960/INTERMOCK#readme"
 }
