@@ -76,7 +76,7 @@ app.post("/register", async function(req, res){
             service: 'gmail',
             auth: {
               user: 'entermock@gmail.com',
-              pass: 'process.env.GMAIL_PWD''
+              pass: process.env.GMAIL_PWD
             }
           });
           
@@ -104,7 +104,7 @@ EnterMock Groups of Education and Research.`
                         service: 'gmail',
                         auth: {
                           user: 'entermock@gmail.com',
-                          pass: 'process.env.GMAIL_PWD''
+                          pass: process.env.GMAIL_PWD
                         }
                       });
                       
@@ -182,7 +182,7 @@ app.post('/forgot', function(req, res, next) {
         service: 'gmail', 
         auth: {
           user: 'entermock@gmail.com',
-          pass: 'process.env.GMAIL_PWD''
+          pass: process.env.GMAIL_PWD
         }
       });
       var mailOptions = {
@@ -243,7 +243,7 @@ app.post('/forgot', function(req, res, next) {
           service: 'gmail', 
           auth: {
             user: 'entermock@gmail.com',
-            pass: 'process.env.GMAIL_PWD'
+            pass: process.env.GMAIL_PWD
           }
         });
         var mailOptions = {
