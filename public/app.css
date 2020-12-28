@@ -138,11 +138,10 @@
       font-size: 8px;
     }
     #aboutus{
-      float:right;
+      margin-right: 20%;
       margin-top: 1%;
       color: #5c5a54;
       font-size: 20px;
-      margin-right: 1%;
     }
   }
   .card-img-top{
