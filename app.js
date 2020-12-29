@@ -82,9 +82,7 @@ app.post("/register", async function(req, res){
         }passport.authenticate("local")(req, res, function(){
           req.flash("success","You have successfully created your account")  
           res.redirect("/home"); 
-         });
-        });
-        var transporter = nodemailer.createTransport({
+          var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
               user: 'entermock@gmail.com',
@@ -111,35 +109,38 @@ EnterMock Groups of Education and Research.`
               console.log('Email sent: ' + info.response);
             }
           });
-                    //mail number 2
-                    var transporter2 = nodemailer.createTransport({
-                        service: 'gmail',
-                        auth: {
-                          user: 'entermock@gmail.com',
-                          pass: process.env.GMAIL_PWD
-                        }
-                      });
+  //mail number 2
+  var transporter2 = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'entermock@gmail.com',
+        pass: process.env.GMAIL_PWD
+      }
+    });
                       
-                      var mailOptions2 = {
-                        from: 'entermock@gmail.com',
-                        to: 'entermock@gmail.com',
-                        subject: 'A new user has registered.',
-                        text: "Hello sir, a new user has registered just now. Here are the details"+`
-                        `+"name-> "+req.body.name+`
-                        `+"username-> "+req.body.username+`
-                        `+"email-> "+req.body.email+`
-                        `+"phone-> "+req.body.phone+`
-                        `+"address-> "+req.body.address
-                      };
-                      
-                      
-                      transporter2.sendMail(mailOptions2, function(error, info){
-                        if (error) {
-                          console.log(error);
-                        } else {
-                          console.log('Email sent: ' + info.response);
-                        }
-                      });
+  var mailOptions2 = {
+    from: 'entermock@gmail.com',
+    to: 'entermock@gmail.com',
+    subject: 'A new user has registered.',
+    text: "Hello sir, a new user has registered just now. Here are the details"+`
+    `+"name-> "+req.body.name+`
+    `+"username-> "+req.body.username+`
+    `+"email-> "+req.body.email+`
+    `+"phone-> "+req.body.phone+`
+    `+"address-> "+req.body.address
+  };
+  
+  
+  transporter2.sendMail(mailOptions2, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+         });
+        });
+
 });
 app.post("/login", passport.authenticate("local",
 {
