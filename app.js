@@ -3,7 +3,6 @@ const app=express();
 var LocalStrategy= require('passport-local')
 var methodOverride=require('method-override');
 var expressSanitizer= require('express-sanitizer');
-var mongoose= require('mongoose');
 var flash=require("connect-flash")
 var passport= require('passport')
 var User=require("./models/user");
@@ -11,17 +10,12 @@ var crypto =require("crypto")
 var async=require("async")
 var nodemailer = require('nodemailer');
 const port=process.env.PORT || 3000;
+const {isLoggedIn}=require("./middleware/isLoggedIn")
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(flash());
 require('dotenv').config();
-mongoose.set('useCreateIndex', true);
-mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
-    console.log("connected to DB");
-}).catch(err => {
-    console.log("Error",err.message);
-});
-
+require('./database/mongoose.js')
 app.set("view engine","ejs");
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
@@ -154,7 +148,7 @@ app.get("/logout", function(req, res){
     req.flash("success","Logged out successfully")
     res.redirect("/home");
  });
- app.get("/prepare",function(req,res){
+ app.get("/prepare",isLoggedIn,function(req,res){
      res.render("prepare")
  })
  app.get("/home/:id",function(req,res){
@@ -300,3 +294,38 @@ app.post('/forgot', function(req, res, next) {
       }
     });
   });
+  app.get("/payScheme",function(req,res){
+    res.render("payScheme")
+  })
+  app.get("/c_material",function(req,res){
+    res.render("c_material")
+  })
+  app.post("/callback",function(req,res){
+    res.send("Payment successful")
+  })
+  const Paytm = require('paytm-pg-node-sdk');
+
+ const checksum_lib = require('./checksum/checksum');
+  app.get("/payment",isLoggedIn,function(req,res){
+    let params={}
+    params['MID']="vccQcf97486308841965"
+    params['WEBSITE']="WEBSTAGING"
+    params['CHANNEL_ID']="WEB"
+    params['INDUSTRY_TYPE_ID']="Retail"
+    params['ORDER_ID']="ORD0002343422"
+    params['CUST_ID']="CUST00341222"
+    params['TXN_AMOUNT']="5"
+    params['CALLBACK_URL']='http://localhost:'+port+'/callback'
+    params['EMAIL']='rganga757@gmail.com'
+    params['MOBILE_NO']="9140739195"
+    checksum_lib.genchecksum(params,'BiDwlnx!EB3fyiw3',function(err,checksum){
+      let txn_url="https://securegw-stage.paytm.in/order/process"
+      let form_fields=""
+      for(x in params){
+        form_fields+="<input type='hidden' name='"+x+"' value='"+params[x]+"'/>" 
+      }
+      form_fields+="<input type='hidden' name='CHECKSUMHASH' value='"+checksum+"'/>"
+      var html='<html><body><center><h1>Please wait! Do not refresh the page </h1></center><form method="post" action="'+txn_url+'"name="f1" >'+form_fields+'</form><script type="text/javascript">document.f1.submit()</script></body>'
+      res.send(html)
+    })
+  })

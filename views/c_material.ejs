@@ -1,0 +1,32 @@
+<%- include("partials/header")%>
+<div class="container">
+    Question 1. Write a c program to print Hello World.<br>
+<button data-toggle="collapse" data-target="#demo">Collapsible</button>
+<div id="demo" class="collapse">
+    #include <stdio.h><br>
+        int main() {<br>
+           printf("Hello, World!");<br>
+           return 0;<br>
+        }<br>
+</div>
+</div>
+
+<div class="container">
+    Question 1. This is the first question.<br>
+<button data-toggle="collapse" data-target="#demo2">Collapsible</button>
+<div id="demo2" class="collapse">
+    #include <stdio.h>
+        int main()<br> {    <br>
+        
+            int number1, number2, sum;<br>
+            
+            printf("Enter two integers: ");<br>
+            scanf("%d %d", &number1, &number2);<br>
+            sum = number1 + number2;      <br>
+            
+            printf("%d + %d = %d", number1, number2, sum);<br>
+            return 0;<br>
+        }
+</div>
+</div>
+<%- include("partials/footer")%>
