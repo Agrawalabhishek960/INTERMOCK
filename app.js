@@ -312,8 +312,8 @@ app.post('/forgot', function(req, res, next) {
     params['WEBSITE']="WEBSTAGING"
     params['CHANNEL_ID']="WEB"
     params['INDUSTRY_TYPE_ID']="Retail"
-    params['ORDER_ID']="ORD0002343422"
-    params['CUST_ID']="CUST00341222"
+    params['ORDER_ID']="ORD"+ new Date().getTime();
+    params['CUST_ID']="ENTMK00" +new Date().getTime();
     params['TXN_AMOUNT']="5"
     params['CALLBACK_URL']='http://localhost:'+port+'/callback'
     params['EMAIL']='rganga757@gmail.com'
