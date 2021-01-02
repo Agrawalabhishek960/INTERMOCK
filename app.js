@@ -298,7 +298,7 @@ app.post('/forgot', function(req, res, next) {
     res.render("payScheme")
   })
   app.get("/c_material",function(req,res){
-    res.render("c_material")
+    res.render("materials/c_material")
   })
   app.post("/callback",function(req,res){
     res.send("Payment successful")
