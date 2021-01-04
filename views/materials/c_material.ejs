@@ -7,8 +7,8 @@
 <% c_ques.forEach(function(c_que){%>
 <div class="container" style="border: 2px solid gray; border-radius:3px; margin-bottom:20px;box-shadow: 5px 5px #010f26;">
     <h5><%=c_que.question%><br></h5>
-<button data-toggle="collapse" class="btn btn-primary" data-target="#demo">Solution</button>
-<div id="demo" class="collapse">
+<button data-toggle="collapse" class="btn btn-primary" data-target="#<%=c_que._id %>">Solution</button>
+<div id="<%=c_que._id %>" class="collapse">
     <h6><%=c_que.answer%><h6>
 </div>
 </div>
