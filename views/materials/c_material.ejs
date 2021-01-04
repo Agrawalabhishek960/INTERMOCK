@@ -1,15 +1,21 @@
 <%- include("../partials/header")%>
 <% if((currentUser.isAdmin)){ %>
     <div class="nav_but">
-        <a class="btn btn-primary btn-lg" href="/c_material/update" role="button">ADD new question </a>
+        <a class="btn btn-primary btn-lg" href="/c_material/update" role="button">ADD new Question </a>
       </div>
 <% } %>
 <% c_ques.forEach(function(c_que){%>
-<div class="container" style="border: 2px solid gray; border-radius:3px; margin-bottom:20px;box-shadow: 5px 5px #010f26;">
+<div class="container" style="border: 2px solid rgb(128, 128, 128); border-radius:3px; margin-bottom:20px;box-shadow: 5px 5px #010f26;">
     <h5><%=c_que.question%><br></h5>
 <button data-toggle="collapse" class="btn btn-primary" data-target="#<%=c_que._id %>">Solution</button>
+<% if((currentUser.isAdmin)){ %>
+<a href="/c_material/<%=c_que._id%>/edit" style="margin-right: 5px;">EDIT</a>
+<form id="delete" action="/c_material/<%=c_que._id%>?_method=DELETE" method="POST">
+    <button class="btn btn-danger">DELETE</button>
+</form>
+<% } %>
 <div id="<%=c_que._id %>" class="collapse">
-    <h6><%=c_que.answer%><h6>
+    <h6><%=c_que.answer%></h6>
 </div>
 </div>
 <%});%>

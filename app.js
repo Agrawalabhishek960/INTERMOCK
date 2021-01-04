@@ -352,3 +352,35 @@ app.post('/forgot', function(req, res, next) {
       }
     });
   });
+  app.get("/c_material/:id/edit",function(req,res){
+    C_ques.findById(req.params.id,function(err,foundques){
+      if(err)
+        {
+          console.log(err);
+        }
+      else{
+        res.render("materials/c_edit",{c_que:foundques});
+      }
+    });
+  });
+  app.put("/c_material/:id",function(req,res){
+    req.body.c_que.body= req.sanitize(req.body.c_que.body)
+    C_ques.findByIdAndUpdate(req.params.id,req.body.c_que,function(err,updateque){
+      if(err){
+        console.log(err)
+      }
+      else{
+        res.redirect("/c_material");
+      }
+    });
+  });
+  app.delete("/c_material/:id",function(req,res){
+    C_ques.findByIdAndRemove(req.params.id,function(err){
+      if(err){
+        res.redirect("/c_material");
+      }
+      else{
+        res.redirect("/c_material");
+      }
+    });
+  });
