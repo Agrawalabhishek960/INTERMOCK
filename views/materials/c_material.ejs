@@ -9,10 +9,16 @@
     <h5><%=c_que.question%><br></h5>
 <button data-toggle="collapse" class="btn btn-primary" data-target="#<%=c_que._id %>">Solution</button>
 <% if((currentUser.isAdmin)){ %>
-<a href="/c_material/<%=c_que._id%>/edit" style="margin-right: 5px;">EDIT</a>
+<div class="row">
+    <div class="col-md-6" style="margin-top: 5px; text-align: center;">
+<a class="btm btn-primary btn-lg" href="/c_material/<%=c_que._id%>/edit">EDIT</a>
+</div>
+<div class="col-md-6">
 <form id="delete" action="/c_material/<%=c_que._id%>?_method=DELETE" method="POST">
     <button class="btn btn-danger">DELETE</button>
 </form>
+</div>
+</div>
 <% } %>
 <div id="<%=c_que._id %>" class="collapse">
     <h6><%=c_que.answer%></h6>
