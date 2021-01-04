@@ -6,6 +6,8 @@ var expressSanitizer= require('express-sanitizer');
 var flash=require("connect-flash")
 var passport= require('passport')
 var User=require("./models/user");
+var C_ques=require("./models/c_questions");
+
 var crypto =require("crypto")
 var async=require("async")
 var nodemailer = require('nodemailer');
@@ -297,9 +299,6 @@ app.post('/forgot', function(req, res, next) {
   app.get("/payScheme",function(req,res){
     res.render("payScheme")
   })
-  app.get("/c_material",function(req,res){
-    res.render("materials/c_material")
-  })
   app.post("/callback",function(req,res){
     res.send("Payment successful")
   })
@@ -329,3 +328,27 @@ app.post('/forgot', function(req, res, next) {
       res.send(html)
     })
   })
+  app.get("/c_material/update",function(req,res){
+    res.render("materials/c_material_update")
+  })
+  app.get("/c_material",function(req,res){
+    C_ques.find({},function(err,c_ques){
+      if(err){
+        console.log(err);
+      }
+      else{
+        res.render("materials/c_material",{c_ques:c_ques});
+      }
+    });
+  });
+  app.post("/c_material",function(req,res){
+    req.body.c_ques.body= req.sanitize(req.body.c_ques.body)
+    C_ques.create(req.body.c_ques,function(err,newques){
+      if(err){
+        console.log(err);
+      }
+      else{
+        res.redirect("/c_material");
+      }
+    });
+  });
