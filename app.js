@@ -74,7 +74,7 @@ app.post("/register",upload.single('resume'),async function(req, res){
         address:req.body.address,
         resume:req.file
     });
-    console.log(req.file)
+    // console.log(req.file)
     await User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
