@@ -8,7 +8,8 @@ var passport= require('passport')
 var User=require("./models/user");
 var C_ques=require("./models/c_questions");
 var multer=require("multer")
-var upload=multer({dest:'uploads/'})
+const {storage}=require("./cloudinary")
+var upload=multer({storage})
 var crypto =require("crypto")
 var async=require("async")
 var nodemailer = require('nodemailer');
@@ -71,10 +72,9 @@ app.post("/register",upload.single('resume'),async function(req, res){
         email: req.body.email,
         phone:req.body.phone,
         address:req.body.address,
-        resume:req.body.resume
+        resume:req.file
     });
-    console.log(req.body,req.file)
-    console.log(newUser)
+    console.log(req.file)
     await User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
@@ -119,8 +119,8 @@ EnterMock Groups of Education and Research.`
     });
                       
   var mailOptions2 = {
-    from: 'entermocks@gmail.com',
-    to: 'entermocks@gmail.com',
+    from: 'entermock@gmail.com',
+    to: 'entermock@gmail.com',
     subject: 'A new user has registered.',
     text: "Hello sir, a new user has registered just now. Here are the details"+`
     `+"name-> "+req.body.name+`
