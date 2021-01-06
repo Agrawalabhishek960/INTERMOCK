@@ -7,7 +7,8 @@ var flash=require("connect-flash")
 var passport= require('passport')
 var User=require("./models/user");
 var C_ques=require("./models/c_questions");
-
+var multer=require("multer")
+var upload=multer({dest:'uploads/'})
 var crypto =require("crypto")
 var async=require("async")
 var nodemailer = require('nodemailer');
@@ -63,14 +64,17 @@ app.get("/register",function(req,res){
 app.get("/login",function(req,res){
     res.render("login")
 })
-app.post("/register", async function(req, res){
+app.post("/register",upload.single('resume'),async function(req, res){
     var newUser = new User({
         name: req.body.name,
         username:req.body.username,
         email: req.body.email,
         phone:req.body.phone,
-        address:req.body.address
+        address:req.body.address,
+        resume:req.body.resume
     });
+    console.log(req.body,req.file)
+    console.log(newUser)
     await User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
@@ -101,7 +105,7 @@ EnterMock Groups of Education and Research.`
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
               console.log(error);
-            } else {
+            } else {  
               console.log('Email sent: ' + info.response);
             }
           });
@@ -115,8 +119,8 @@ EnterMock Groups of Education and Research.`
     });
                       
   var mailOptions2 = {
-    from: 'entermock@gmail.com',
-    to: 'entermock@gmail.com',
+    from: 'entermocks@gmail.com',
+    to: 'entermocks@gmail.com',
     subject: 'A new user has registered.',
     text: "Hello sir, a new user has registered just now. Here are the details"+`
     `+"name-> "+req.body.name+`

@@ -6,6 +6,7 @@ var userSchema=new mongoose.Schema({
         type:String,unique:true,required:true,match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
     },
     isAdmin:{type:Boolean,default:false},
+    resume:{type:String},
     phone:{type:Number},
     address:{type:String},
     resetPasswordToken: {type:String},
