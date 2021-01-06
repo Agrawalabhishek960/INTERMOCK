@@ -65,7 +65,7 @@ app.get("/register",function(req,res){
 app.get("/login",function(req,res){
     res.render("login")
 })
-app.post("/register",upload.single('resume'),async function(req, res){
+app.post("/register",async function(req, res){
     var newUser = new User({
         name: req.body.name,
         username:req.body.username,
