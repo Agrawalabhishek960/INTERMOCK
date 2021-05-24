@@ -18,9 +18,9 @@ mongoose.connect('mongodb+srv://irretus:irretus@irretusagrobackend.nfbaw.mongodb
 //To create a new user
 let user= new User({
 
-    email: "anchal@gmail.com",
+    email: "myname@gmail.com",
 
-    password: "Monika"
+    password: "Mypassword"
 
   });
 
